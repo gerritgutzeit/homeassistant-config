@@ -158,30 +158,29 @@
 
 #############################
 # Telegram Presence
-  - alias: "Telegram iPhone Ping"
-    trigger: 
-      - platform: state
-        entity_id: device_tracker.gerrit
-        state: 'home'
-        for:
-          minutes: 1
-    action: 
-        service: notify.telegram
-        data:
-          message: "iPhone ist im WLAN GutzeitNET 5, set state to home!"
-  - alias: "Telegram iPhone Ping fail"
-    trigger: 
-      - platform: state
-        entity_id: device_tracker.gerrit
-        state: 'not_home'
-        for:
-          minutes: 2
-    action: 
-        service: notify.telegram
-        data:
-          message: "iPhone ist im nicht im WLAN, set state to not home!"
+#  - alias: "Telegram iPhone Ping"
+#    trigger: 
+#      - platform: state
+#        entity_id: device_tracker.gerrit
+#        state: 'home'
+#        for:
+#          minutes: 1
+#    action: 
+#        service: notify.telegram
+#        data:
+#          message: "iPhone ist im WLAN GutzeitNET 5, set state to home!"
+#  - alias: "Telegram iPhone Ping fail"
+#    trigger: 
+#      - platform: state
+#        entity_id: device_tracker.gerrit
+#        state: 'not_home'
+#        for:
+#          minutes: 2
+#    action: 
+#        service: notify.telegram
+#        data:
+#          message: "iPhone ist im nicht im WLAN, set state to not home!"
 #############################
-
 
 
 #############################
