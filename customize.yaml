@@ -1,0 +1,74 @@
+#################################################################
+## Customize
+#################################################################
+    - entity_id: switch.computer
+      friendly_name: Computer
+      icon: mdi:desktop-mac
+    - entity_id: binary_sensor.computer
+      friendly_name: Computer Check
+      icon: mdi:check
+    - entity_id: light.atv
+      #hidden: yes
+    - entity_id: light.gerrits_zimmer
+      #hidden: yes
+    - entity_id: light.master_light
+      #hidden: yes
+    - entity_id: light.bett
+      icon: mdi:power_plug
+    - entity_id: automation.apple_tv_start
+      #hidden: yes
+    - entity_id: automation.apple_tv_stopp
+      #hidden: yes
+    - entity_id: automation.karmin
+      hidden: no
+      friendly_name: Kamin
+      icon: mdi:fire
+    - entity_id: scene.dimm50lights
+      friendly_name: Licht 50%
+      icon: mdi:lightbulb-on-outline
+    - entity_id: scene.dimmlights
+      friendly_name: Licht 10%
+      icon: mdi:lightbulb-on-outline
+    - entity_id: scene.dimmlightsorange
+      friendly_name: Licht 10% Orange
+      icon: mdi:lightbulb-on-outline
+    - entity_id: scene.lightblue
+      friendly_name: Licht Blau 100%
+      icon: mdi:lightbulb-on-outline
+    - entity_id: sensor.gutzeitgaming
+      friendly_name: Twitch Status
+      hidden: no
+    - entity_id: automation.twitch_tv_live_off
+      #hidden: yes
+    - entity_id: automation.twitch_tv_live_on
+      #hidden: yes
+    - entity_id: automation.steamgame_light
+      #hidden: yes
+    - entity_id: sensor.steam_game
+      icon: mdi:steam
+    - entity_id: light.lautsprecher
+      icon: mdi:speaker
+    - entity_id: automation.play_event_notify
+      #hidden: yes
+    - entity_id: light.flur__kuche
+      #hidden: yes
+    - entity_id: automation.inputtv
+      #hidden: yes
+    - entity_id: automation.mutetv
+      #hidden: yes      
+    - entity_id: sensor.pws_temp_c
+      friendly_name: Temperatur
+    - entity_id: sensor.pws_weather
+      friendly_name: Wetter
+    - entity_id: sensor.gutzeitsystems_system_load
+      friendly_name: Gutzeit Systems System Load
+      icon: mdi:server-network
+    - entity_id: sensor.gutzeitsystems_ram_free
+      friendly_name: Gutzeit Systems Free Ram
+      icon: mdi:equal-box
+    - entity_id: sensor.homepi_system_load
+      friendly_name: HomePI System Load 
+      icon: mdi:server-network
+    - entity_id: sensor.homepi_ram_free
+      friendly_name: HomePI Free Ram
+      icon: mdi:equal-box

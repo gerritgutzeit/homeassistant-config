@@ -1,0 +1,213 @@
+#################################################################
+## Automations
+#################################################################
+
+
+#############################
+# APPLE TV DIMM DOWN
+  - alias: "Apple TV Start"
+    trigger:
+      - platform: state
+        entity_id: media_player.apple_tv
+        from: 'paused'
+        to: 'playing'
+    condition:
+      condition: and
+      conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: 'group.licht'
+        state: 'on'
+
+    action:
+        service: scene.turn_on
+        entity_id: scene.dimmlightsorange
+# APPLE TV DIMM UP
+  - alias: "Apple TV Stopp"
+    trigger:
+      - platform: state
+        entity_id: media_player.apple_tv
+        from: 'playing'
+        to: 'paused'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: group.licht
+          state: 'on'
+
+    action:
+        service: scene.turn_on
+        entity_id: scene.dimm50lights        
+#############################
+
+
+#############################
+# Karmin auf Fernseher
+  - alias: "Karmin"
+    trigger:
+      platform: event
+      event_type: karmin
+
+    action:
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.apple_tv
+          media_content_id: http://gutzeit.systems/mp3/fire.mp4
+          media_content_type: video/mp4
+      - service: media_player.turn_on
+        entity_id: media_player.fernseher
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.fernseher
+          source: Apple TV        
+#############################
+
+
+
+#############################
+# Change Input am TV
+  - alias: "inputtv"
+    trigger:
+      platform: event
+      event_type: inputtv
+
+    action:
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.fernseher
+          source: Apple TV
+      - service: media_player.turn_on
+        entity_id: media_player.fernseher        
+#############################
+
+
+
+#############################
+# Mute TV
+  - alias: "mutetv"
+    trigger:
+      platform: event
+      event_type: mutetv
+
+    action:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.fernseher
+          volume_level: 0.0
+#############################
+
+
+
+#############################
+# Twitch LIGHTS
+  - alias: "Twitch TV Live ON"
+    trigger:
+      - platform: state
+        entity_id: sensor.gutzeitgaming
+        from: 'offline'
+        to: 'streaming'
+    condition:
+      - condition: state
+        entity_id: device_tracker.gerrit
+        state: 'home'
+
+    action:
+        service: scene.turn_on
+        entity_id: scene.lightblue     
+  - alias: "Twitch TV Live OFF"
+    trigger:
+      - platform: state
+        entity_id: sensor.gutzeitgaming
+        from: 'streaming'
+        to: 'offline'
+    condition:
+      - condition: state
+        entity_id: device_tracker.gerrit
+        state: 'home'
+
+    action:
+        service: scene.turn_on
+        entity_id: scene.dimm50lights
+#############################
+
+
+
+#############################
+# STEAM licht wenn zu Hause
+  - alias: "SteamGame Light"
+    trigger:
+      - platform: state
+        entity_id: sensor.steam_game
+        from: 'None'
+    condition:
+      - condition: state
+        entity_id: device_tracker.gerrit
+        state: 'home'
+    action:
+        service: scene.turn_on
+        entity_id: scene.lightblue
+#############################
+
+
+
+#############################
+# Telegram Presence
+  - alias: "Telegram iPhone Ping"
+    trigger: 
+      - platform: state
+        entity_id: device_tracker.gerrit
+        state: 'home'
+        for:
+          minutes: 1
+    action: 
+        service: notify.telegram
+        data:
+          message: "iPhone ist im WLAN GutzeitNET 5, set state to home!"
+  - alias: "Telegram iPhone Ping fail"
+    trigger: 
+      - platform: state
+        entity_id: device_tracker.gerrit
+        state: 'not_home'
+        for:
+          minutes: 2
+    action: 
+        service: notify.telegram
+        data:
+          message: "iPhone ist im nicht im WLAN, set state to not home!"
+#############################
+
+
+
+#############################
+# Telegram Home Start
+  - alias: "Start Hass Telegram"
+    trigger:
+      platform: event
+      event_type: homeassistant_start
+    action: 
+        service: notify.telegram
+        data:
+          message: "Home Assistant ist gestartet. Config nicht verkackt."
+
+
+
+
+
+#### OLD 
+#  - alias: "play event notify"
+#    trigger:
+#      - platform: state
+#        entity_id: media_player.apple_tv
+#        from: 'paused'
+#        to: 'playing'
+#    action:
+#      service: notify.fernseher
+#      data:
+#        message: "Apple TV Wiedergabe erkannt! Dimm Lights down!"
+

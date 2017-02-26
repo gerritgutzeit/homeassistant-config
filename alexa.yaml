@@ -1,0 +1,28 @@
+ intents:
+    KaminIntent:
+      action:
+        service: scene.turn_on
+        data_template:
+          entity_id: scene.kamin
+      speech:
+        type: plaintext
+        text: frechbrecht call
+
+    LichtcallIntent:
+      action: 
+        service: light.turn_on
+        data_template:
+            entity_id: light.gerrits_zimmer
+      speech:
+        type: plaintext
+        text: mach ich du gaunerbrecht
+
+    RechnungIntent:
+      speech:
+        type: plaintext
+        text: wird nie bezahlt mit albrecht pay        
+
+    ChecklistIntent:
+      speech:
+        type: plaintext
+        text: Schlüssel. In der Hand. Fenster? Zu. Heizung? Aus. Herd? Aus. Geld? In der Jacke. iPhone und Kopfhörer?

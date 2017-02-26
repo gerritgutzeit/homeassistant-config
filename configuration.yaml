@@ -1,0 +1,127 @@
+################################################################################
+################################################################################
+################################################################################               
+############  / ___| | | |_   _|__  / ____|_ _|_   _|            ###############
+############ | |  _| | | | | |   / /|  _|  | |  | |              ###############
+############ | |_| | |_| | | |  / /_| |___ | |  | |              ###############
+############  \____|\___/ _|_|_/____|_____|___| |_|              ###############
+############ | | | |/ _ \|  \/  | ____|                          ###############
+############ | |_| | | | | |\/| |  _|                            ###############
+############ |  _  | |_| | |  | | |___                           ###############
+############ |_| |_|\___/|_|__|_|_____|_ _____  _    _   _ _____ ###############
+############    / \  / ___/ ___|_ _/ ___|_   _|/ \  | \ | |_   _|###############
+############   / _ \ \___ \___ \| |\___ \ | | / _ \ |  \| | | |  ###############
+############  / ___ \ ___) |__) | | ___) || |/ ___ \| |\  | | |  ###############
+############ /_/   \_\____/____/___|____/ |_/_/   \_\_| \_| |_|  ###############
+################################################################################
+################################################################################
+
+homeassistant:
+  # Home Name
+  name: Gutzeit Home
+  latitude: !secret lat
+  longitude: !secret long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 3
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Berlin
+
+####COUSTOM ITEMS
+  customize: !include customize.yaml
+
+####WEB ADDRESS
+http:
+  api_password: !secret http_password
+  ssl_certificate: !secret ssl_certificate 
+  ssl_key: !secret ssl_key
+
+####GROUPS
+group: !include groups.yaml
+
+####SCENES
+scene: !include scenes.yaml
+
+####AUTOMATIONS
+automation: !include automations.yaml
+
+####IFTTT
+ifttt:
+  key: !secret ifttt_key
+
+####ALEXA DETECTION
+emulated_hue:
+
+####ALEXA
+alexa: !include alexa.yaml
+
+####PHILIPS HUE 
+light:
+  platform: hue
+  allow_in_emulated_hue: false
+  host: 192.168.178.37
+
+####MEIDA PLAYER
+media_player:
+  - platform: webostv
+    host: 192.168.178.44
+    mac: A0:6F:AA:56:B2:B2
+    name: Fernseher
+    customize:
+      sources:
+        - livetv
+        - youtube
+  - platform: apple_tv
+    host: 192.168.178.22
+    login_id: !secret apple_tv_login
+
+switch:
+  - platform: command_line
+    switches:
+      computer:
+        command_on: !secret wakeonlan 
+        command_off: !secret com_off 
+
+binary_sensor:
+  - platform: command_line
+    command: 'ping -c 1 192.168.178.10 | grep "1 received" | wc -l'
+    name: 'Computer'
+    sensor_class: connectivity
+    payload_on: 1
+    payload_off: 0
+
+sensor: !include sensors.yaml
+
+
+# Track the sun
+sun:
+
+device_tracker:
+  - platform: locative
+  - platform: ping
+    hosts:
+      gerrit: 192.168.178.28
+notify:
+  - platform: webostv
+    host: 192.168.178.44
+    name: Fernseher
+    filename: webostv.conf
+  - name: telegram
+    platform: telegram
+    api_key: !secret tg_api
+    chat_id: !secret tg_id
+
+####Text to speech
+tts:
+  platform: google
+
+####UPDATE CHECK
+updater:
+
+####LOGBOOK for all Events
+logbook:
+
+####LOG view
+history:
+

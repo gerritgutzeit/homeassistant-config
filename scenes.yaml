@@ -1,0 +1,42 @@
+#################################################################
+## SCENES
+#################################################################
+  - name: dimmlights
+    entities:
+        group.licht:
+            state: on
+            brightness: 20
+            transition: 10
+
+  - name: dimmlightsorange
+    entities:
+        group.licht:
+            state: on
+            brightness: 20
+            transition: 10
+            rgb_color: [228,160,66]
+
+  - name: dimm50lights
+    entities:
+        group.licht:
+            state: on
+            brightness: 140
+            transition: 4
+
+  - name: lightblue
+    entities:
+        group.licht:
+            state: on
+            brightness: 254
+            transition: 4
+            rgb_color: [75,75,255]
+        light.bett:
+            state: off
+
+  - name: kamin
+    entities:
+        media_player.apple_tv:
+            media_content_id: http://gutzeit.systems/mp3/fire.mp4
+            media_content_type: video/mp4
+        media_player.fernseher:
+            state: on

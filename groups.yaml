@@ -1,0 +1,112 @@
+#################################################################
+## GROUPS
+#################################################################
+
+
+####VIEW
+###
+  default_view:
+    view: yes
+    name: Def
+    entities:
+      - sun.sun
+      - sensor.pws_temp_c
+      - sensor.pws_weather     
+      - device_tracker.gerrit
+      - device_tracker.1e946250a85e45b7a68ac23fd13b39a3
+      - group.licht      
+      - group.nebenraum
+      - group.scene
+      - group.system
+      - group.computer
+      - group.gaming
+      - group.computer
+      - group.media
+###      
+  Lichtpage:
+    view: yes
+    name: Licht
+    entities:
+      - group.scene
+      - group.licht
+      - group.licht_2
+      - group.nebenraum
+  systempage:
+    view: yes
+    name: System
+    icon: mdi:server
+    entities: 
+      - group.system
+      - group.netdata
+
+
+####GROUP
+  scene:
+    name: Szenen
+    entities:
+      - scene.dimmlightsorange
+      - scene.dimmlights
+      - scene.dimm50lights
+      - scene.lightblue
+      - automation.karmin
+
+  media:
+    name: TV
+    entities:
+      - media_player.fernseher
+      - media_player.apple_tv
+
+  licht:
+    name: Licht
+    entities:
+      - light.eingang_top
+      - light.eigang_bottom
+      - light.effekt
+      - light.fenster
+      - light.nachtlicht
+      - light.orgel_top
+      - light.orgel_bottom
+      - light.schreibtisch_links
+      - light.schreibtisch_rechts
+      - light.tisch
+      - light.tv_led
+      - light.bett
+
+  nebenraum:
+    name: Nebenraum
+    entities:
+      - light.flur
+      - light.kuche
+
+  computer:
+    name: Computer
+    entities:
+     - binary_sensor.computer
+     - switch.computer
+     - light.lautsprecher
+
+  gaming:
+    name: Gaming
+    entities:
+     - sensor.steam_76561198024466723
+     - sensor.steam_game
+     - sensor.gutzeitgaming
+
+  system:
+    name: System
+    entities:
+      - sensor.cpu_use
+      - sensor.disk_use_
+      - sensor.ram_free
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.since_last_boot
+
+  netdata:
+    name: Netdata
+    entities:
+      - sensor.gutzeitsystems_system_load
+      - sensor.gutzeitsystems_ram_free
+      - sensor.homepi_system_load
+      - sensor.homepi_ram_free
