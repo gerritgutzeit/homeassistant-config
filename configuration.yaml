@@ -125,3 +125,8 @@ logbook:
 ####LOG view
 history:
 
+climate:
+  - platform: eq3btsmart
+    devices:
+      bad:
+        mac: '00:1A:22:06:60:59'

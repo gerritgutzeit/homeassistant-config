@@ -193,7 +193,33 @@
         service: notify.telegram
         data:
           message: "Home Assistant ist gestartet. Config nicht verkackt."
+#############################
 
+
+
+#############################
+# Presence Heating
+## Heating ON
+  - alias: "Gerrit zuhause Heizung ON"
+    trigger:
+      platform: state
+      entity_id: device_tracker.gerrit
+      state: 'home' 
+    action:
+        service: climate.set_temperature
+        data:
+          temperature: 20
+#
+## Heating OFF
+  - alias: "Gerrit zuhause Heizung OFF"
+    trigger:
+      platform: state
+      entity_id: device_tracker.gerrit
+      state: 'not_home' 
+    action:
+        service: climate.set_temperature
+        data:
+          temperature: 17
 
 
 

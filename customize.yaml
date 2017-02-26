@@ -72,3 +72,15 @@
     - entity_id: sensor.homepi_ram_free
       friendly_name: HomePI Free Ram
       icon: mdi:equal-box
+    - entity_id: climate.bad
+      friendly_name: Badezimmer Heizung
+      entity_picture: http://i.imgur.com/OrAiovu.jpg
+    - entity_id: sensor.speedtest_ping
+      friendly_name: Ping
+      icon: mdi:elevation-rise
+    - entity_id: sensor.speedtest_download
+      friendly_name: Download Speed
+      icon: mdi:cloud-download
+    - entity_id: sensor.speedtest_upload
+      friendly_name: Upload Speed
+      icon: mdi:cloud-upload

@@ -75,6 +75,7 @@
     resources:
       - memory_free
       - system_load
+
   - platform: netdata
     host: netdata.gutzeit.systems
     port: 80
