@@ -127,9 +127,10 @@
       - sensor.homepi_ram_free
 
   bad:
-    name: Badezimmer
+    name: Heizung
     entities:
       - climate.bad
+      - climate.kitchen
 
   ambiances:
     name: Ambiente

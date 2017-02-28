@@ -133,3 +133,5 @@ climate:
     devices:
       bad:
         mac: !secret eq3_mac
+      kitchen:
+        mac: !secret eq3_mac_kitchen

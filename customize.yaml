@@ -1,97 +1,100 @@
 #################################################################
 ## Customize
 #################################################################
-    - entity_id: switch.computer
+     switch.computer:
       friendly_name: Computer
       icon: mdi:desktop-mac
-    - entity_id: binary_sensor.computer
+     binary_sensor.computer:
       friendly_name: Computer Check
       icon: mdi:check
-    - entity_id: light.atv
+     #light.atv:
       #hidden: yes
-    - entity_id: light.gerrits_zimmer
+     #light.gerrits_zimmer:
       #hidden: yes
-    - entity_id: light.master_light
+     #light.master_light:
       #hidden: yes
-    - entity_id: light.bett
+     light.bett:
       icon: mdi:power_plug
-    - entity_id: automation.apple_tv_start
+     #automation.apple_tv_start:
       #hidden: yes
-    - entity_id: automation.apple_tv_stopp
+     #automation.apple_tv_stopp:
       #hidden: yes
-    - entity_id: automation.karmin
+     automation.karmin:
       hidden: no
       friendly_name: Kamin
       icon: mdi:fire
-    - entity_id: scene.dimm50lights
+     scene.dimm50lights:
       friendly_name: Licht 50%
       icon: mdi:lightbulb-on-outline
-    - entity_id: scene.dimmlights
+     scene.dimmlights:
       friendly_name: Licht 10%
       icon: mdi:lightbulb-on-outline
-    - entity_id: scene.dimmlightsorange
+     scene.dimmlightsorange:
       friendly_name: Licht 10% Orange
       icon: mdi:lightbulb-on-outline
-    - entity_id: scene.lightblue
+     scene.lightblue:
       friendly_name: Licht Blau 100%
       icon: mdi:lightbulb-on-outline
-    - entity_id: sensor.gutzeitgaming
+     sensor.gutzeitgaming:
       friendly_name: Twitch Status
       hidden: no
-    - entity_id: automation.twitch_tv_live_off
+     #automation.twitch_tv_live_off:
       #hidden: yes
-    - entity_id: automation.twitch_tv_live_on
+     #automation.twitch_tv_live_on:
       #hidden: yes
-    - entity_id: automation.steamgame_light
+     #automation.steamgame_light:
       #hidden: yes
-    - entity_id: sensor.steam_game
+     sensor.steam_game:
       icon: mdi:steam
-    - entity_id: light.lautsprecher
+     light.lautsprecher:
       icon: mdi:speaker
-    - entity_id: automation.play_event_notify
+     #automation.play_event_notify:
       #hidden: yes
-    - entity_id: light.flur__kuche
+     #light.flur__kuche:
       #hidden: yes
-    - entity_id: automation.inputtv
+     #automation.inputtv:
       #hidden: yes
-    - entity_id: automation.mutetv
+     #automation.mutetv:
       #hidden: yes      
-    - entity_id: sensor.pws_temp_c
+     sensor.pws_temp_c:
       friendly_name: Temperatur
-    - entity_id: sensor.pws_weather
+     sensor.pws_weather:
       friendly_name: Wetter
-    - entity_id: sensor.gutzeitsystems_system_load
+     sensor.gutzeitsystems_system_load:
       friendly_name: Gutzeit Systems System Load
       icon: mdi:server-network
-    - entity_id: sensor.gutzeitsystems_ram_free
+     sensor.gutzeitsystems_ram_free:
       friendly_name: Gutzeit Systems Free Ram
       icon: mdi:equal-box
-    - entity_id: sensor.homepi_system_load
+     sensor.homepi_system_load:
       friendly_name: HomePI System Load 
       icon: mdi:server-network
-    - entity_id: sensor.homepi_ram_free
+     sensor.homepi_ram_free:
       friendly_name: HomePI Free Ram
       icon: mdi:equal-box
-    - entity_id: climate.bad
+     climate.bad:
       friendly_name: Badezimmer Heizung
       entity_picture: http://i.imgur.com/OrAiovu.jpg
-    - entity_id: sensor.speedtest_ping
+     climate.kitchen:
+      friendly_name: Küche Heizung
+      entity_picture: http://i.imgur.com/OrAiovu.jpg
+     sensor.speedtest_ping:
       friendly_name: Ping
       icon: mdi:elevation-rise
-    - entity_id: sensor.speedtest_download
+     sensor.speedtest_download:
       friendly_name: Download Speed
       icon: mdi:cloud-download
-    - entity_id: sensor.speedtest_upload
+     sensor.speedtest_upload:
       friendly_name: Upload Speed
       icon: mdi:cloud-upload
-    - entity_id: script.fire
+     script.fire:
       friendly_name: Kamin
       entity_picture: http://i.imgur.com/ZWy3MXU.jpg
-    - entity_id: script.strand
+     script.strand:
       friendly_name: Strand
       entity_picture: http://i.imgur.com/O4XEpb1.jpg
-    - entity_id: script.regen
+     script.regen:
       friendly_name: Regenwald
       entity_picture: http://i.imgur.com/uj3C7zC.png
-    - entity_id: script.stoptv
+     script.stoptv:
       friendly_name: Stop Apple TV
