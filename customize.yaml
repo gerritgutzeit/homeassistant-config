@@ -84,3 +84,9 @@
     - entity_id: sensor.speedtest_upload
       friendly_name: Upload Speed
       icon: mdi:cloud-upload
+    - entity_id: script.fire
+      friendly_name: Kamin
+      entity_picture: /img/fire.jpg
+    - entity_id: script.strand
+      friendly_name: Strand
+      entity_picture: /img/strand.jpg

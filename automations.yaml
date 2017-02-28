@@ -220,8 +220,42 @@
         service: climate.set_temperature
         data:
           temperature: 17
+##############################
+
+#Alarm Alexa
+  - alias: "alarmalexa"
+    trigger:
+      platform: event
+      event_type: alarm
+    action:
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.apple_tv
+          media_content_id: http://gutzeit.systems/mp3/fire.mp4
+          media_content_type: video/mp4
+      - service: media_player.turn_on
+        entity_id: media_player.fernseher
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.fernseher
+          source: Apple TV        
+      - service: climate.set_temperature
+        entity_id: climate.bad
+        data:
+          temperature: 23
 
 
+#test tv
+  - alias: "testtvvideo"
+    trigger:
+      platform: event
+      event_type: videotest
+    action:
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.fernseher
+          media_content_id: https://www.youtube.com/watch?v=qREKP9oijWI
+          media_content_type: video
 
 
 #### OLD 

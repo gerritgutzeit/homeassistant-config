@@ -31,6 +31,7 @@
     icon: mdi:lightbulb
     entities:
       - group.scene
+      - group.ambiances
       - group.licht
       - group.licht_2
       - group.nebenraum
@@ -62,6 +63,8 @@
       - scene.dimm50lights
       - scene.lightblue
       - scene.kamin
+      - automation.alarmalexa
+      - automation.testtvvideo
   media:
     name: TV
     entities:
@@ -127,3 +130,9 @@
     name: Badezimmer
     entities:
       - climate.bad
+
+  ambiances:
+    name: Ambiente
+    entities:
+      - script.feuer
+      - script.strand

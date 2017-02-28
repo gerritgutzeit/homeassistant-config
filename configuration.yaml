@@ -43,6 +43,9 @@ group: !include groups.yaml
 ####SCENES
 scene: !include scenes.yaml
 
+####SCRIPTS
+script: !include scripts.yaml
+
 ####AUTOMATIONS
 automation: !include automations.yaml
 
