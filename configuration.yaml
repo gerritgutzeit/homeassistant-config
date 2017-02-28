@@ -31,8 +31,12 @@ homeassistant:
 ####COUSTOM ITEMS
   customize: !include customize.yaml
 
+####CONFIG
+config:
+
 ####WEB ADDRESS
 http:
+  base_url: !secret base_url
   api_password: !secret http_password
   ssl_certificate: !secret ssl_certificate 
   ssl_key: !secret ssl_key
@@ -119,6 +123,12 @@ notify:
 tts:
   platform: google
 
+####Telegram
+telegram_webhooks:
+  api_key: !secret tg_api
+  user_id:
+    user1: !secret tg_user_id
+
 ####UPDATE CHECK
 updater:
 
@@ -128,6 +138,7 @@ logbook:
 ####LOG view
 history:
 
+####Heizung
 climate:
   - platform: eq3btsmart
     devices:
