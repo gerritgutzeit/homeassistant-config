@@ -134,5 +134,6 @@
   ambiances:
     name: Ambiente
     entities:
-      - script.feuer
+      - script.fire
       - script.strand
+      - script.regen

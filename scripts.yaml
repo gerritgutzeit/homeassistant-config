@@ -17,7 +17,13 @@ fire:
       - service: media_player.select_source
         data:
           entity_id: media_player.fernseher
-          source: Apple TV        
+          source: Apple TV      
+      - delay:
+          seconds: 3
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.fernseher
+          volume_level: 0.0              
 
 
 
@@ -36,3 +42,32 @@ strand:
         data:
           entity_id: media_player.fernseher
           source: Apple TV        
+      - delay:
+          seconds: 3
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.fernseher
+          volume_level: 0.1              
+
+
+#Regen
+regen:
+    alias: RegenTV
+    sequence:
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.apple_tv
+          media_content_id: http://gutzeit.systems/mp3/regen.mp4
+          media_content_type: video/mp4
+      - service: media_player.turn_on
+        entity_id: media_player.fernseher
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.fernseher
+          source: Apple TV        
+      - delay:
+          seconds: 3
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.fernseher
+          volume_level: 0.1                        

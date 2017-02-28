@@ -228,17 +228,9 @@
       platform: event
       event_type: alarm
     action:
-      - service: media_player.play_media
+      - service: script.strand
         data:
-          entity_id: media_player.apple_tv
-          media_content_id: http://gutzeit.systems/mp3/fire.mp4
-          media_content_type: video/mp4
-      - service: media_player.turn_on
-        entity_id: media_player.fernseher
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.fernseher
-          source: Apple TV        
+          state: on
       - service: climate.set_temperature
         entity_id: climate.bad
         data:

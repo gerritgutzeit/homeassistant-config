@@ -86,7 +86,10 @@
       icon: mdi:cloud-upload
     - entity_id: script.fire
       friendly_name: Kamin
-      entity_picture: /img/fire.jpg
+      entity_picture: http://i.imgur.com/ZWy3MXU.jpg
     - entity_id: script.strand
       friendly_name: Strand
-      entity_picture: /img/strand.jpg
+      entity_picture: http://i.imgur.com/O4XEpb1.jpg
+    - entity_id: script.regen
+      friendly_name: Regenwald
+      entity_picture: http://i.imgur.com/uj3C7zC.png
