@@ -93,3 +93,5 @@
     - entity_id: script.regen
       friendly_name: Regenwald
       entity_picture: http://i.imgur.com/uj3C7zC.png
+    - entity_id: script.stoptv
+      friendly_name: Stop Apple TV
