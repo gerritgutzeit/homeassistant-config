@@ -95,3 +95,9 @@ stoptv:
           entity_id: media_player.fernseher
           volume_level: 0.2                        
 
+lighttest:
+    alias: lighttest
+    sequence:
+      - service: light.hue_activate_scene
+        data:
+          scene_name: 'Edit'

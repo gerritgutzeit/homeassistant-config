@@ -22,6 +22,8 @@
       - group.gaming
       - group.computer
       - group.media
+      - script.lighttest
+      - switch.door
 ###      
 
 
@@ -70,6 +72,7 @@
     entities:
       - media_player.fernseher
       - media_player.apple_tv
+      - light.hypergutzeitpi
 
   licht:
     name: Licht

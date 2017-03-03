@@ -6,7 +6,7 @@
         group.licht:
             state: on
             brightness: 20
-            transition: 10
+            transition: 5
 
   - name: dimmlightsorange
     entities:

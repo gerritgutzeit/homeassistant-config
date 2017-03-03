@@ -248,7 +248,7 @@
     action:
       - service: notify.telegram
         data:
-          message: 'pong'
+          message: 'pong2'     
 
 #Help
   - alias: "help telegram"
@@ -309,8 +309,8 @@
           message: 'Available Light commands:'
           data:
             keyboard:
-              - '/lighton, /lightoff'  
-              - '/seclighton, /seclightoff'  
+              - '/lighton, /lightoff, /lightedit'  
+              - '/seclighton, /seclightoff, /blue'  
               - '/start'  
 
 
@@ -452,11 +452,10 @@
       event_data:
         command: '/lighton' 
     action:
-      - service: light.turn_on     
+      - service: light.hue_activate_scene
         data:
-          entity_id: group.licht
-          brightness: 200
-          color_temp: 460
+          group_name: 'Gerrits Zimmer'
+          scene_name: 'Warmes Licht'       
       - service: notify.telegram
         data:
           message: 'Licht ist an.'     
@@ -506,7 +505,39 @@
           entity_id: group.nebenraum
       - service: notify.telegram
         data:
-          message: 'Nebenraum Licht ist aus.'     
+          message: 'Nebenraum Licht ist aus.'
+
+#light on edit
+  - alias: "light edit telegram"
+    trigger:
+      platform: event
+      event_type: telegram.command
+      event_data:
+        command: '/lightedit' 
+    action:
+      - service: light.hue_activate_scene
+        data:
+          group_name: 'Gerrits Zimmer'
+          scene_name: 'Edit'       
+      - service: notify.telegram
+        data:
+          message: 'Licht ist auf die Szene Edit gestellt.'       
+
+#light blue
+  - alias: "light gaming telegram"
+    trigger:
+      platform: event
+      event_type: telegram.command
+      event_data:
+        command: '/blue' 
+    action:
+      - service: light.hue_activate_scene
+        data:
+          group_name: 'Gerrits Zimmer'
+          scene_name: 'Gaming'       
+      - service: notify.telegram
+        data:
+          message: 'Licht ist auf die Szene Gaming gestellt.'                          
 ###############################################################
 
 

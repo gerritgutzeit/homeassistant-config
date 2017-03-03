@@ -65,9 +65,15 @@ alexa: !include alexa.yaml
 
 ####PHILIPS HUE 
 light:
-  platform: hue
-  allow_in_emulated_hue: false
-  host: 192.168.178.37
+  - platform: hue
+    allow_in_emulated_hue: false
+    host: 192.168.178.37
+  - platform: hyperion
+    host: 192.168.178.29
+    name: Gutzeit Ambilight    
+    default_color: [255,102,0]
+  
+
 
 ####MEIDA PLAYER
 media_player:
@@ -89,6 +95,9 @@ switch:
       computer:
         command_on: !secret wakeonlan 
         command_off: !secret com_off 
+      door:
+        command_on: !secret cmd_on_tür
+        command_off: !secret cmd_off_tür   
 
 binary_sensor:
   - platform: command_line

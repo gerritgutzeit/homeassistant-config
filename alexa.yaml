@@ -26,3 +26,12 @@
       speech:
         type: plaintext
         text: Schlüssel. In der Hand. Fenster? Zu. Heizung? Aus. Herd? Aus. Geld? In der Jacke. iPhone und Kopfhörer?
+
+    TemperaturIntent:
+      action:
+        service: climate.set_temperature
+        data:
+          temperature: 19    
+      speech:
+        type: plaintext
+        text: frechbrecht call        

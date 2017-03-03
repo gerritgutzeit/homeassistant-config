@@ -98,3 +98,8 @@
       entity_picture: http://i.imgur.com/uj3C7zC.png
      script.stoptv:
       friendly_name: Stop Apple TV
+     device_tracker.1e946250a85e45b7a68ac23fd13b39a3:
+      assumed_state: home
+     light.hypergutzeitpi: 
+      friendly_name: Ambilight
+      icon: mdi:spotlight
