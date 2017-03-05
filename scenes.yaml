@@ -40,3 +40,15 @@
             media_content_type: video/mp4
         media_player.fernseher:
             state: on
+
+  - name: edit
+    entities:  
+        light.hue_activate_scene:
+             group_name: 'Gerrits Zimmer'
+             scene_name: 'Edit'  
+
+  - name: warmes Licht
+    entities:  
+        light.hue_activate_scene:
+             group_name: 'Gerrits Zimmer'
+             scene_name: 'Warmes Licht'               

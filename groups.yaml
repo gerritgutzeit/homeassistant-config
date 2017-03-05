@@ -66,6 +66,9 @@
       - scene.dimm50lights
       - scene.lightblue
       - scene.kamin
+      - script.edit
+      - script.warmeslicht
+      - script.gaming
       - automation.alarmalexa
       - automation.testtvvideo
   media:

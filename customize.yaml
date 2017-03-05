@@ -109,3 +109,12 @@
      input_select.hyperion_effect:
       icon: mdi:blur-linear
       friendly_name: TV Effekt 
+     script.edit:
+      icon: mdi:lightbulb-on-outline
+      friendly_name: Edit
+     script.warmeslicht:
+      icon: mdi:lightbulb-on-outline
+      friendly_name: Warmes Licht
+     script.gaming:
+      icon: mdi:lightbulb-on-outline
+      friendly_name: Gaming 

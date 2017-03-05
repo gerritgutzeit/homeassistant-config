@@ -104,9 +104,26 @@ shutdownambi:
         data:
           entity_id: light.hypergutzeitpi
 
-lighttest:
-    alias: lighttest
+edit:
+    alias: edit
     sequence:
       - service: light.hue_activate_scene
         data:
+          group_name: 'Gerrits Zimmer'
           scene_name: 'Edit'
+
+warmeslicht:
+    alias: warmeslicht
+    sequence:
+      - service: light.hue_activate_scene
+        data:
+          group_name: 'Gerrits Zimmer'
+          scene_name: 'Warmes Licht'
+        
+gaming:
+    alias: gaming
+    sequence:
+      - service: light.hue_activate_scene
+        data:
+          group_name: 'Gerrits Zimmer'
+          scene_name: 'Gaming'     
