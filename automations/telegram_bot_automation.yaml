@@ -1,0 +1,495 @@
+
+#############################
+# Telegram Presence
+#alias: "Telegram iPhone Ping"
+#trigger: 
+#  - platform: state
+#entity_id: device_tracker.gerrit
+#state: 'home'
+#for:
+#  minutes: 1
+#action: 
+#service: notify.telegram
+#data:
+#  message: "iPhone ist im WLAN GutzeitNET 5, set state to home!"
+#alias: "Telegram iPhone Ping fail"
+#trigger: 
+#  - platform: state
+#entity_id: device_tracker.gerrit
+#state: 'not_home'
+#for:
+#  minutes: 2
+#action: 
+#service: notify.telegram
+#data:
+#  message: "iPhone ist im nicht im WLAN, set state to not home!"
+#############################
+
+
+#############################
+# Telegram Home Start
+alias: "Start Hass Telegram"
+trigger:
+  platform: event
+  event_type: homeassistant_start
+action: 
+service: notify.telegram
+data:
+  message: "Home Assistant ist gestartet. Config nicht verkackt. Sende den Befehl /start für die Commands."
+#############################
+
+
+
+#############################
+# Presence Heating
+## Heating ON
+alias: "Gerrit zuhause Heizung ON"
+trigger:
+  platform: state
+  entity_id: device_tracker.gerrit
+  state: 'home' 
+action:
+service: climate.set_temperature
+data:
+  temperature: 20
+#
+## Heating OFF
+alias: "Gerrit zuhause Heizung OFF"
+trigger:
+  platform: state
+  entity_id: device_tracker.gerrit
+  state: 'not_home' 
+action:
+service: climate.set_temperature
+data:
+  temperature: 17
+##############################
+
+#Alarm Alexa
+alias: "alarmalexa"
+trigger:
+  platform: event
+  event_type: alarm
+action:
+service: script.strand
+data:
+  state: on
+  service: climate.set_temperature
+entity_id: climate.bad
+data:
+  temperature: 23
+
+##############################
+#Telegram Test
+alias: "telegram bot that reply pong to ping"
+hide_entity: true
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/ping'
+action:
+  - service: notify.telegram
+data:
+  message: 'pong23' 
+
+#Help
+alias: "help telegram"
+hide_entity: true
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/help'
+action:
+  - service: notify.telegram
+data:
+  message: 'Start the bot with /start. Based on Home Assistant. Version v.0.1 of http://gutzeit.systems Telegram Bot.'
+
+#Telegram Commands
+###MENÜ
+alias: "Telegram Start /"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/start'
+action:
+  - service: notify.telegram
+data:
+  message: 'Los gehts:'
+  data:
+keyboard:
+  - '/light, /media, /climate'
+  - '/help'  
+
+alias: "Telegram TV keyboard"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/tv'
+action:
+  - service: notify.telegram
+data:
+  message: 'Available TV commands:'
+  data:
+keyboard:
+  - '/tvon, /tvoff'
+  - '/inputappletv, /inputlivetv, /inputyoutube'  
+  - '/start'  
+
+
+alias: "Telegram Light keyboard"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/light'
+action:
+  - service: notify.telegram
+data:
+  message: 'Available Light commands:'
+  data:
+keyboard:
+  - '/lighton, /lightoff, /lightedit'  
+  - '/seclighton, /seclightoff, /blue'  
+  - '/start'  
+
+
+alias: "Media Telegram keyboard"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/media'
+action:
+  - service: notify.telegram
+data:
+  message: 'Available /media commands:'
+  data:
+keyboard:
+  - '/tv, /ambiance'  
+  - '/hold, /hold2'  
+  - '/start'  
+
+alias: "ambiance Telegram keyboard"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/ambiance'
+action:
+  - service: notify.telegram
+data:
+  message: 'Available /ambiance commands:'
+  data:
+keyboard:
+  - '/kamin, /strand'  
+  - '/regenwald, /stoptv'  
+  - '/start'  
+
+alias: "climate Telegram keyboard"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/climate'
+action:
+  - service: notify.telegram
+data:
+  message: 'Available /climate commands:'
+  data:
+keyboard:
+  - '/con22, /con20, /con17'  
+  - '/start'  
+
+####BEFEHL
+
+###############################################################
+###TV Telegram Commands
+#Telegram TV ON
+alias: "tv on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/tvon' 
+action:
+  - service: media_player.turn_on
+entity_id: media_player.fernseher   
+  - service: notify.telegram
+data:
+  message: 'Fernseher ist an.' 
+#Telegram TV OFF
+alias: "tv off telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/tvoff' 
+action:
+  - service: media_player.turn_off
+entity_id: media_player.fernseher 
+  - service: notify.telegram
+data:
+  message: 'Fernseher ist aus.'  
+
+
+#Input AppleTV ON
+alias: "appletv on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/inputappletv' 
+action:
+  - service: media_player.select_source
+data:
+  entity_id: media_player.fernseher   
+  source: 'Apple TV'
+  - service: notify.telegram
+data:
+  message: 'Fernseher ist auf Apple TV.'
+
+#Input LiveTV ON
+alias: "Livetv on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/inputlivetv' 
+action:
+  - service: media_player.select_source
+data:
+  entity_id: media_player.fernseher   
+  source: 'LiveTV'
+  - service: notify.telegram
+data:
+  message: 'Fernseher ist auf Live TV.'
+
+#Input Youtube ON
+alias: "youtbe on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/inputyoutube' 
+action:
+  - service: media_player.select_source
+data:
+  entity_id: media_player.fernseher   
+  source: 'YouTube'
+  - service: notify.telegram
+data:
+  message: 'Fernseher ist auf YouTube.'  
+###############################################################
+
+##LIGHT Telegram Commands
+###############################################################
+#Telegram Light on
+alias: "light on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/lighton' 
+action:
+  - service: light.hue_activate_scene
+data:
+  group_name: 'Gerrits Zimmer'
+  scene_name: 'Warmes Licht'   
+  - service: notify.telegram
+data:
+  message: 'Licht ist an.' 
+
+#Telegram Light off
+alias: "light off telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/lightoff' 
+action:
+  - service: light.turn_off 
+data:
+  entity_id: group.licht
+  - service: notify.telegram
+data:
+  message: 'Licht ist aus.' 
+
+#Telegram secLight on
+alias: "seclight on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/seclighton' 
+action:
+  - service: light.turn_on 
+data:
+  entity_id: group.nebenraum
+  brightness: 200
+  color_temp: 460
+  - service: notify.telegram
+data:
+  message: 'Nebnraum Licht ist an.' 
+
+#Telegram secLight off
+alias: "seclight off telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/seclightoff' 
+action:
+  - service: light.turn_off 
+data:
+  entity_id: group.nebenraum
+  - service: notify.telegram
+data:
+  message: 'Nebenraum Licht ist aus.'
+
+#light on edit
+alias: "light edit telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/lightedit' 
+action:
+  - service: light.hue_activate_scene
+data:
+  group_name: 'Gerrits Zimmer'
+  scene_name: 'Edit'   
+  - service: notify.telegram
+data:
+  message: 'Licht ist auf die Szene Edit gestellt.'   
+
+#light blue
+alias: "light gaming telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/blue' 
+action:
+  - service: light.hue_activate_scene
+data:
+  group_name: 'Gerrits Zimmer'
+  scene_name: 'Gaming'   
+  - service: notify.telegram
+data:
+  message: 'Licht ist auf die Szene Gaming gestellt.'  
+###############################################################
+
+
+
+###############################################################
+###Ambiance Telegram
+#Telegram kamin ON
+alias: "kamin on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/kamin' 
+action:
+  - service: script.fire
+data:
+  state: on  
+  - service: notify.telegram
+data:
+  message: 'Kamin Ambiente ist an.' 
+
+#Telegram strand ON
+alias: "strand on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/strand' 
+action:
+  - service: script.strand
+data:
+  state: on  
+  - service: notify.telegram
+data:
+  message: 'Strand Ambiente ist an.' 
+
+#Telegram regenwald ON
+alias: "regenwald on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/regenwald' 
+action:
+  - service: script.regen
+data:
+  state: on  
+  - service: notify.telegram
+data:
+  message: 'Regenwald Ambiente ist an.' 
+
+#Telegram stoptv ON
+alias: "stoptv on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/stoptv' 
+action:
+  - service: script.stoptv
+data:
+  state: on  
+  - service: notify.telegram
+data:
+  message: 'Nix mehr Videos auf TV.' 
+###############################################################
+
+
+###############################################################
+####Climate Telegram
+alias: "climate22 on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/con22' 
+action:
+  - service: climate.set_temperature
+data:
+  temperature: 22  
+  - service: notify.telegram
+data:
+  message: 'Die Thermostate im Badezimmer und Küche sind auf 22C°.' 
+
+alias: "climate20 on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/con20' 
+action:
+  - service: climate.set_temperature
+data:
+  temperature: 20  
+  - service: notify.telegram
+data:
+  message: 'Die Thermostate im Badezimmer und Küche sind auf 20C°.'
+
+alias: "climate17 on telegram"
+trigger:
+  platform: event
+  event_type: telegram.command
+  event_data:
+command: '/con17' 
+action:
+  - service: climate.set_temperature
+data:
+  temperature: 17  
+  - service: notify.telegram
+data:
+  message: 'Die Thermostate im Badezimmer und Küche sind auf 17C°. Kalt!'
+

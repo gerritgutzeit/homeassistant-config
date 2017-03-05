@@ -1,0 +1,7 @@
+alias: "Knight Rider blues"
+trigger:
+  platform: state
+  entity_id: input_select.hyperion_effect
+  state: "Knight Rider Blue Slow"
+action:
+service: shell_command.h_knight_rider_blues

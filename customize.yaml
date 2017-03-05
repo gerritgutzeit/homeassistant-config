@@ -101,5 +101,11 @@
      device_tracker.1e946250a85e45b7a68ac23fd13b39a3:
       assumed_state: home
      light.hypergutzeitpi: 
-      friendly_name: Ambilight
+      friendly_name: LED TV
       icon: mdi:spotlight
+     switch.hyperion: 
+      icon: mdi:blur-linear
+      friendly_name: Ambilight
+     input_select.hyperion_effect:
+      icon: mdi:blur-linear
+      friendly_name: TV Effekt 

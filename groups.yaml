@@ -22,6 +22,7 @@
       - group.gaming
       - group.computer
       - group.media
+      - group.camera
       - script.lighttest
       - switch.door
 ###      
@@ -69,10 +70,13 @@
       - automation.testtvvideo
   media:
     name: TV
+    control: no
     entities:
       - media_player.fernseher
       - media_player.apple_tv
+      - switch.hyperion
       - light.hypergutzeitpi
+      - input_select.hyperion_effect
 
   licht:
     name: Licht
@@ -142,3 +146,8 @@
       - script.strand
       - script.regen
       - script.stoptv
+
+  camera:
+    name: Kameras
+    entities:
+      - camera.gerrits_wohung_cam1      

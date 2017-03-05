@@ -1,0 +1,14 @@
+hyperion_effect:
+  name: Hyperion Effect
+  options:
+   - "Knight Rider"
+   - "Knight Rider Blue"
+   - "Knight Rider Red Slow"
+   - "Knight Rider Blue Slow"
+   - "Mood Blobs Cold"
+   - "Rainbow Swirl"
+   - "Snake"
+   - "Police Lights Single"
+   - "Police Lights Solid"   
+   - "Off"
+  initial: "Off"

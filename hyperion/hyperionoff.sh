@@ -1,0 +1,1 @@
+echo  '{ "color": [0,0,0], "command": "color", "priority": 0 }' | nc hypergutzeitpi.local 19444

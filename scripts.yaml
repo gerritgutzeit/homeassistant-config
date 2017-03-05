@@ -95,6 +95,15 @@ stoptv:
           entity_id: media_player.fernseher
           volume_level: 0.2                        
 
+shutdownambi:
+    alias: shutdownabi
+    sequence:
+      - service: shell_command.h_knight_rider_blue
+      - delay: 10
+      - service: light.turn_on
+        data:
+          entity_id: light.hypergutzeitpi
+
 lighttest:
     alias: lighttest
     sequence:
