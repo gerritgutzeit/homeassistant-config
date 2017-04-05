@@ -53,6 +53,12 @@
     entities: 
       - group.system
       - group.netdata
+  automationpage:
+    view: yes
+    name: Automation
+    entities:
+      - automation.gerrit_zuhause_heizung_off
+      - automation.gerrit_zuhause_heizung_on
 ####
 
 
