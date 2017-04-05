@@ -119,10 +119,10 @@ binary_sensor:
 sensor: !include sensors.yaml
 
 ###CAMERA
-# camera:
-#   - platform: mjpeg
-#     mjpeg_url: !secret cam1_url
-#     name: Gerrits Wohung CAM1
+camera:
+  - platform: mjpeg
+    mjpeg_url: !secret cam1_url
+    name: Gerrits Wohung CAM1
 
 
 # Track the sun
