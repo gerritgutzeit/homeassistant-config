@@ -22,8 +22,13 @@
         state: 'on'
 
     action:
-        service: scene.turn_on
-        entity_id: scene.dimmlightsorange
+      - service: scene.turn_on
+        data:
+          entity_id: scene.dimmlightsorange
+      - service: light.turn_off
+        data:
+          entity_id: light.kuche
+
 # APPLE TV DIMM UP
   - alias: "Apple TV Stopp"
     trigger:
@@ -42,8 +47,12 @@
           state: 'on'
 
     action:
-        service: scene.turn_on
-        entity_id: scene.dimm50lights        
+      - service: scene.turn_on
+        data:
+          entity_id: scene.dimm50lights        
+      - service: light.turn_on
+        data:
+          entity_id: light.kuche
 #############################
 
 
@@ -139,19 +148,19 @@
 
 
 #############################
-# STEAM licht wenn zu Hause
-  - alias: "SteamGame Light"
-    trigger:
-      - platform: state
-        entity_id: sensor.steam_game
-        from: 'None'
-    condition:
-      - condition: state
-        entity_id: device_tracker.gerrit
-        state: 'home'
-    action:
-        service: scene.turn_on
-        entity_id: scene.lightblue
+# # STEAM licht wenn zu Hause
+#   - alias: "SteamGame Light"
+#     trigger:
+#       - platform: state
+#         entity_id: sensor.steam_game
+#         from: 'None'
+#     condition:
+#       - condition: state
+#         entity_id: device_tracker.gerrit
+#         state: 'home'
+#     action:
+#         service: scene.turn_on
+#         entity_id: scene.lightblue
 #############################
 
 
@@ -242,7 +251,7 @@
     hide_entity: true
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/ping'
     action:
@@ -255,20 +264,20 @@
     hide_entity: true
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/help'
     action:
       - service: notify.telegram
         data:
-          message: 'Start the bot with /start. Based on Home Assistant. Version v.0.1 of http://gutzeit.systems Telegram Bot.'
+          message: 'Start the bot with /start. Based on Home Assistant. Version v.0.2 of http://gutzeit.systems Telegram Bot.'
 
 #Telegram Commands
 ###MENÜ
   - alias: "Telegram Start /"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/start'
     action:
@@ -283,7 +292,7 @@
   - alias: "Telegram TV keyboard"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/tv'
     action:
@@ -300,7 +309,7 @@
   - alias: "Telegram Light keyboard"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/light'
     action:
@@ -317,7 +326,7 @@
   - alias: "Media Telegram keyboard"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/media'
     action:
@@ -333,7 +342,7 @@
   - alias: "ambiance Telegram keyboard"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/ambiance'
     action:
@@ -349,7 +358,7 @@
   - alias: "climate Telegram keyboard"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/climate'
     action:
@@ -369,7 +378,7 @@
   - alias: "tv on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/tvon' 
     action:
@@ -382,7 +391,7 @@
   - alias: "tv off telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/tvoff' 
     action:
@@ -397,7 +406,7 @@
   - alias: "appletv on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/inputappletv' 
     action:
@@ -413,7 +422,7 @@
   - alias: "Livetv on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/inputlivetv' 
     action:
@@ -429,7 +438,7 @@
   - alias: "youtbe on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/inputyoutube' 
     action:
@@ -448,7 +457,7 @@
   - alias: "light on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/lighton' 
     action:
@@ -464,7 +473,7 @@
   - alias: "light off telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/lightoff' 
     action:
@@ -479,7 +488,7 @@
   - alias: "seclight on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/seclighton' 
     action:
@@ -496,7 +505,7 @@
   - alias: "seclight off telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/seclightoff' 
     action:
@@ -511,7 +520,7 @@
   - alias: "light edit telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/lightedit' 
     action:
@@ -527,7 +536,7 @@
   - alias: "light gaming telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/blue' 
     action:
@@ -548,7 +557,7 @@
   - alias: "kamin on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/kamin' 
     action:
@@ -563,7 +572,7 @@
   - alias: "strand on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/strand' 
     action:
@@ -578,7 +587,7 @@
   - alias: "regenwald on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/regenwald' 
     action:
@@ -593,7 +602,7 @@
   - alias: "stoptv on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/stoptv' 
     action:
@@ -611,7 +620,7 @@
   - alias: "climate22 on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/con22' 
     action:
@@ -625,7 +634,7 @@
   - alias: "climate20 on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/con20' 
     action:
@@ -639,7 +648,7 @@
   - alias: "climate17 on telegram"
     trigger:
       platform: event
-      event_type: telegram.command
+      event_type: telegram_command
       event_data:
         command: '/con17' 
     action:
