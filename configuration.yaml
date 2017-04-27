@@ -94,6 +94,10 @@ media_player:
   - platform: apple_tv
     host: 192.168.178.22
     login_id: !secret apple_tv_login
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
+
 
 switch:
   - platform: command_line

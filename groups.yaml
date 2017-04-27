@@ -25,6 +25,7 @@
       - group.camera
       - script.lighttest
       - switch.door
+      - media_player.spotify
 ###      
 
 
