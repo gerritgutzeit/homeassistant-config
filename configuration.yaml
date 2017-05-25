@@ -152,11 +152,12 @@ tts:
   platform: google
 
 ####Telegram
-telegram_webhooks:
+telegram_bot:
+  platform: webhooks
   api_key: !secret tg_api
-  user_id:
-    user1: !secret tg_user_id
-
+  allowed_chat_ids:
+      - !secret tg_user_id
+      
 ####UPDATE CHECK
 updater:
 
