@@ -77,7 +77,7 @@ light:
   - platform: hyperion
     host: 192.168.178.29
     name: Gutzeit Ambilight    
-    default_color: [0,167,161]
+    default_color: [255,121,11]
   
 
 
