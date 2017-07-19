@@ -19,7 +19,7 @@
       #hidden: yes
      #automation.apple_tv_stopp:
       #hidden: yes
-     automation.karmin:
+     automation.kamin:
       hidden: no
       friendly_name: Kamin
       icon: mdi:fire
